@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <title>SINERGIA CIRCULAR · Plataforma de Economía Circular</title>
   <style>
     * {
@@ -13,55 +16,55 @@
     }
 
     :root {
-      --bg: #0f1117;
-      --bg2: #1a1d27;
-      --card: #1e2235;
-      --text: #f0f2ff;
-      --text2: #9ba3c4;
-      --text3: #6b7399;
+      --bg: #0a1512;
+      --bg2: #0f2019;
+      --card: #13271f;
+      --text: #eaf3ee;
+      --text2: #9db5a8;
+      --text3: #6b8578;
       --border: rgba(255, 255, 255, .08);
-      --border2: rgba(255, 255, 255, .14);
-      --green: #22c17a;
-      --teal: #1db8c4;
-      --amber: #eab308;
-      --blue: #60a5fa;
-      --red: #f87171;
-      --purple: #a78bfa;
-      --actt: #22c17a;
-      --kpi1: #17a362;
-      --kpi2: #158e97;
-      --kpi3: #7c5cff;
-      --ia-bg: rgba(167, 139, 250, .1);
-      --ia-b: rgba(167, 139, 250, .35);
-      --ia-t: #a78bfa;
+      --border2: rgba(255, 255, 255, .15);
+      --green: #3cb54a;
+      --teal: #00875a;
+      --amber: #f2a900;
+      --blue: #3d8bcd;
+      --red: #e06f5f;
+      --purple: #d4692c;
+      --actt: #3cb54a;
+      --kpi1: #00694a;
+      --kpi2: #007a33;
+      --kpi3: #c85412;
+      --ia-bg: rgba(212, 105, 44, .12);
+      --ia-b: rgba(212, 105, 44, .35);
+      --ia-t: #e58a4f;
     }
 
     body.light {
-      --bg: #f4f6fb;
-      --bg2: #eaecf5;
-      --card: #fff;
-      --text: #111827;
-      --text2: #4b5675;
-      --text3: #8892b0;
-      --border: rgba(0, 0, 0, .08);
-      --border2: rgba(0, 0, 0, .14);
-      --green: #16a34a;
-      --teal: #0891b2;
-      --amber: #ca8a04;
-      --blue: #2563eb;
-      --red: #dc2626;
-      --purple: #7c3aed;
-      --actt: #15803d;
-      --kpi1: #17a362;
-      --kpi2: #158e97;
-      --kpi3: #7c5cff;
-      --ia-bg: rgba(124, 58, 237, .08);
-      --ia-b: rgba(124, 58, 237, .3);
-      --ia-t: #7c3aed;
+      --bg: #f2f6f3;
+      --bg2: #e7efe9;
+      --card: #ffffff;
+      --text: #12261e;
+      --text2: #42574c;
+      --text3: #7e9184;
+      --border: rgba(0, 66, 54, .1);
+      --border2: rgba(0, 66, 54, .18);
+      --green: #007a33;
+      --teal: #004236;
+      --amber: #c7952a;
+      --blue: #00548c;
+      --red: #c0392b;
+      --purple: #c85412;
+      --actt: #004236;
+      --kpi1: #004236;
+      --kpi2: #007a33;
+      --kpi3: #c85412;
+      --ia-bg: rgba(200, 84, 18, .08);
+      --ia-b: rgba(200, 84, 18, .3);
+      --ia-t: #c85412;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: "Barlow", "Helvetica Neue", Arial, -apple-system, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
@@ -81,7 +84,7 @@
       width: 36px;
       height: 36px;
       border-radius: 9px;
-      background: linear-gradient(135deg, var(--green), var(--teal));
+      background: linear-gradient(135deg, #004236, #3cb54a);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -191,8 +194,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(680px 340px at 50% -8%, color-mix(in srgb, var(--green) 20%, transparent), transparent 70%),
-        radial-gradient(520px 300px at 82% 10%, color-mix(in srgb, var(--teal) 16%, transparent), transparent 72%);
+        radial-gradient(680px 340px at 50% -8%, color-mix(in srgb, var(--green) 22%, transparent), transparent 70%),
+        radial-gradient(520px 300px at 82% 10%, color-mix(in srgb, var(--amber) 14%, transparent), transparent 72%);
       pointer-events: none;
     }
 
@@ -788,7 +791,7 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--kpi3), var(--teal));
+      background: linear-gradient(135deg, #004236, #007a33);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1647,6 +1650,32 @@
       color: var(--text3);
       margin-top: 8px;
       text-align: center;
+    }
+
+    /* Ecopetrol corporate polish */
+    body.light .mod,
+    body.light .card2,
+    body.light .out,
+    body.light .dstat,
+    body.light .scale-node {
+      box-shadow: 0 1px 3px rgba(0, 66, 54, .06), 0 6px 18px rgba(0, 66, 54, .05);
+    }
+
+    body.light .kpi {
+      box-shadow: 0 8px 24px rgba(0, 66, 54, .18);
+    }
+
+    body.light .side {
+      box-shadow: 0 1px 3px rgba(0, 66, 54, .05);
+    }
+
+    .hero-eyebrow {
+      background: color-mix(in srgb, var(--green) 8%, transparent);
+    }
+
+    .mod:hover,
+    .fcard:hover {
+      box-shadow: 0 10px 30px rgba(0, 66, 54, .1);
     }
   </style>
 </head>
