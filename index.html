@@ -1677,6 +1677,634 @@
     .fcard:hover {
       box-shadow: 0 10px 30px rgba(0, 66, 54, .1);
     }
+
+    /* ===== NIR interactive flow ===== */
+    .flow-track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .ft-step {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ft-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      min-width: 88px;
+    }
+
+    .ft-circ {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      border: 2px solid var(--border2);
+      color: var(--text3);
+      transition: .25s;
+      flex-shrink: 0;
+    }
+
+    .ft-circ .ico {
+      width: 18px;
+      height: 18px;
+    }
+
+    .ft-node.done .ft-circ {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .ft-node.active .ft-circ {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--teal) 18%, transparent);
+    }
+
+    .ft-lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text3);
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .ft-node.active .ft-lbl,
+    .ft-node.done .ft-lbl {
+      color: var(--text);
+    }
+
+    .ft-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border2);
+      min-width: 20px;
+      margin: 0 -4px;
+      margin-bottom: 26px;
+    }
+
+    .ft-line.done {
+      background: var(--green);
+    }
+
+    .stage {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      min-height: 280px;
+    }
+
+    .stage-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn-primary:disabled {
+      opacity: .4;
+      cursor: default;
+    }
+
+    .btn-ghost2 {
+      background: transparent;
+      border: 1px solid var(--border2);
+      color: var(--text2);
+      border-radius: 9px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-ghost2:disabled {
+      opacity: .35;
+      cursor: default;
+    }
+
+    .stage-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .stage-desc {
+      font-size: 12.5px;
+      color: var(--text3);
+      margin-bottom: 18px;
+    }
+
+    /* capture channels */
+    .chan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .chan {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .chan .ch-ic {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: color-mix(in srgb, var(--teal) 13%, transparent);
+      color: var(--teal);
+    }
+
+    .chan .ch-ic .ico {
+      width: 21px;
+      height: 21px;
+    }
+
+    .chan h5 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .chan p {
+      font-size: 11px;
+      color: var(--text3);
+      line-height: 1.45;
+    }
+
+    .chan .ch-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      margin-top: 8px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      display: inline-block;
+      background: color-mix(in srgb, var(--amber) 15%, transparent);
+      color: var(--amber);
+    }
+
+    .sample-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 16px;
+      background: var(--bg);
+      border: 1px dashed var(--border2);
+      border-radius: 12px;
+    }
+
+    .sample-row label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text2);
+    }
+
+    .sample-sel {
+      background: var(--card);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* NIR spectral scan animation */
+    .scan-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .scan-svg {
+      width: 100%;
+      height: 130px;
+    }
+
+    .scan-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    .spinner {
+      width: 15px;
+      height: 15px;
+      border: 2px solid color-mix(in srgb, var(--teal) 30%, transparent);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .result-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: color-mix(in srgb, var(--green) 14%, transparent);
+      color: var(--green);
+      font-weight: 800;
+      font-size: 15px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      margin-top: 6px;
+    }
+
+    /* ficha caracterización */
+    .ficha {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 16px;
+    }
+
+    .ficha-main {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .ficha-sig {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--teal);
+      letter-spacing: -1px;
+    }
+
+    .ficha-nom {
+      font-size: 13px;
+      color: var(--text2);
+      margin-bottom: 12px;
+    }
+
+    .fp-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      padding: 7px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .fp-row span:first-child {
+      color: var(--text3);
+    }
+
+    .fp-row span:last-child {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .feeds {
+      background: color-mix(in srgb, var(--green) 6%, transparent);
+      border: 1px solid color-mix(in srgb, var(--green) 22%, transparent);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .feeds h5 {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 11.5px;
+      color: var(--text2);
+      padding: 6px 0;
+    }
+
+    .feed-item .fi-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* radio de circularidad cards (recovered) */
+    .rc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .rc-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .rc-card.best {
+      border-color: var(--green);
+      box-shadow: 0 0 0 1px var(--green) inset;
+    }
+
+    .rc-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 9px;
+      gap: 10px;
+    }
+
+    .rc-emp {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .rc-proc {
+      font-size: 10.5px;
+      color: var(--text3);
+      margin-top: 1px;
+    }
+
+    .rc-km {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      flex-shrink: 0;
+    }
+
+    .rc-meta {
+      font-size: 10.5px;
+      color: var(--text3);
+      margin-bottom: 3px;
+    }
+
+    .rc-meta b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .rc-bar {
+      height: 5px;
+      border-radius: 3px;
+      background: var(--border);
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .rc-bar i {
+      display: block;
+      height: 100%;
+      border-radius: 3px;
+    }
+
+    .rc-via {
+      font-size: 10.5px;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+
+    /* blockchain ledger */
+    .ledger {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .block {
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      padding: 16px;
+      position: relative;
+    }
+
+    .block-link {
+      width: 2px;
+      height: 16px;
+      background: var(--border2);
+      margin: 0 auto;
+    }
+
+    .block-h {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 11px;
+    }
+
+    .block-ic {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--purple) 14%, transparent);
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .block-ic .ico {
+      width: 16px;
+      height: 16px;
+    }
+
+    .block-n {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .block-t {
+      font-size: 10.5px;
+      color: var(--text3);
+    }
+
+    .block-verified {
+      margin-left: auto;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: color-mix(in srgb, var(--green) 12%, transparent);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .block-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 18px;
+    }
+
+    .bg-item {
+      font-size: 11px;
+    }
+
+    .bg-item .bl {
+      color: var(--text3);
+    }
+
+    .bg-item .bv {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .block-hash {
+      grid-column: 1/-1;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 10px;
+      color: var(--text3);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 7px 10px;
+      margin-top: 4px;
+      word-break: break-all;
+    }
+
+    .block-hash b {
+      color: var(--teal);
+    }
+
+    /* analytics */
+    .an-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .an-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .an-card h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .an-card .an-sub {
+      font-size: 11px;
+      color: var(--text3);
+      margin-bottom: 16px;
+    }
+
+    .donut-wrap {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .legend2 {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .legend2 .l2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: var(--text2);
+    }
+
+    .legend2 .l2 .d {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    .legend2 .l2 b {
+      color: var(--text);
+      margin-left: auto;
+    }
+
+    @media (max-width:900px) {
+      .chan-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ficha {
+        grid-template-columns: 1fr;
+      }
+
+      .rc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .an-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .block-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -2052,10 +2680,37 @@
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2 2 7l10 5 10-5-10-5Z" />
               <path d="m2 17 10 5 10-5M2 12l10 5 10-5" />
-            </svg></div>
+            </svg>
+          </div>
           <div>
             <div class="ni-t">Proyectos</div>
             <div class="ni-s">Circularidad a escala</div>
+          </div>
+        </div>
+        <div class="navitem" data-nav="traz" onclick="showView('traz',this)">
+          <div class="ni-ic" style="background:color-mix(in srgb,var(--purple) 15%,transparent);color:var(--purple)">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1 1 0 0 1 1.5 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+          </div>
+          <div>
+            <div class="ni-t">Trazabilidad</div>
+            <div class="ni-s">Libro mayor · blockchain</div>
+          </div>
+        </div>
+        <div class="navitem" data-nav="anal" onclick="showView('anal',this)">
+          <div class="ni-ic" style="background:color-mix(in srgb,var(--teal) 15%,transparent);color:var(--teal)"><svg
+              class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+              <path d="M7 15l3-3 3 2 4-5" />
+            </svg></div>
+          <div>
+            <div class="ni-t">Analítica</div>
+            <div class="ni-s">Elemento de valor</div>
           </div>
         </div>
       </aside>
@@ -2064,57 +2719,79 @@
         <!-- ===== M1 Plásticos ===== -->
         <section class="view" id="view-m1">
           <div class="vhead">
-            <h2>M1 · Plásticos — Catálogo de caracterización NIR</h2>
-            <p>Ficha técnica por polímero a partir de la lectura NIR. Canal de captura (web, móvil u offline) aún en
-              definición.</p>
+            <h2>M1 · Plásticos — Del residuo plástico a la circularidad</h2>
+            <p>Recorra el flujo completo: cómo entra el dato del NIR, cómo se caracteriza el polímero, quién puede
+              aprovecharlo y cómo queda trazado.</p>
           </div>
+
           <div class="card2">
-            <div class="card2-h">
-              <h3>Polímeros catalogados</h3><span class="badge">Módulo M1</span>
+            <div class="flow-track" id="nirTrack">
+              <div class="ft-step">
+                <div class="ft-node active" onclick="nirGo(0)">
+                  <div class="ft-circ"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" />
+                      <path d="M7 12h10" />
+                    </svg></div>
+                  <div class="ft-lbl">1. Captura<br>del dato</div>
+                </div>
+                <div class="ft-line"></div>
+              </div>
+              <div class="ft-step">
+                <div class="ft-node" onclick="nirGo(1)">
+                  <div class="ft-circ"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 3h6M10 3v6l-4.5 8A2 2 0 0 0 7 20h10a2 2 0 0 0 1.7-3L14 9V3" />
+                      <path d="M8.5 14h7" />
+                    </svg></div>
+                  <div class="ft-lbl">2. Lectura<br>NIR</div>
+                </div>
+                <div class="ft-line"></div>
+              </div>
+              <div class="ft-step">
+                <div class="ft-node" onclick="nirGo(2)">
+                  <div class="ft-circ"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <ellipse cx="12" cy="5" rx="9" ry="3" />
+                      <path d="M3 5v14a9 3 0 0 0 18 0V5" />
+                      <path d="M3 12a9 3 0 0 0 18 0" />
+                    </svg></div>
+                  <div class="ft-lbl">3. Caracteri-<br>zación</div>
+                </div>
+                <div class="ft-line"></div>
+              </div>
+              <div class="ft-step">
+                <div class="ft-node" onclick="nirGo(3)">
+                  <div class="ft-circ"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="6" cy="19" r="3" />
+                      <circle cx="18" cy="5" r="3" />
+                      <path d="M9 19h6a3 3 0 0 0 3-3V8M6 16V8a3 3 0 0 1 3-3h6" />
+                    </svg></div>
+                  <div class="ft-lbl">4. Radio de<br>circularidad</div>
+                </div>
+                <div class="ft-line"></div>
+              </div>
+              <div class="ft-step">
+                <div class="ft-node" onclick="nirGo(4)">
+                  <div class="ft-circ"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1 1 0 0 1 1.5 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z" />
+                      <path d="m9 12 2 2 4-4" />
+                    </svg></div>
+                  <div class="ft-lbl">5. Trazabi-<br>lidad</div>
+                </div>
+              </div>
             </div>
-            <div class="poly-grid">
-              <div class="poly">
-                <div class="pp-sig">PP</div>
-                <div class="pp-n">Polipropileno</div>
-                <div class="pp-row"><span>Densidad</span><span>0.90–0.91</span></div>
-                <div class="pp-row"><span>Fusión</span><span>160–165 °C</span></div>
-                <div class="pp-row"><span>Reciclabilidad</span><span>Alto</span></div>
-              </div>
-              <div class="poly">
-                <div class="pp-sig">PET</div>
-                <div class="pp-n">Tereftalato</div>
-                <div class="pp-row"><span>Densidad</span><span>1.38–1.40</span></div>
-                <div class="pp-row"><span>Fusión</span><span>250–260 °C</span></div>
-                <div class="pp-row"><span>Reciclabilidad</span><span>Alto</span></div>
-              </div>
-              <div class="poly">
-                <div class="pp-sig">HDPE</div>
-                <div class="pp-n">Polietileno AD</div>
-                <div class="pp-row"><span>Densidad</span><span>0.94–0.96</span></div>
-                <div class="pp-row"><span>Fusión</span><span>125–135 °C</span></div>
-                <div class="pp-row"><span>Reciclabilidad</span><span>Alto</span></div>
-              </div>
-              <div class="poly">
-                <div class="pp-sig">LDPE</div>
-                <div class="pp-n">Polietileno BD</div>
-                <div class="pp-row"><span>Densidad</span><span>0.91–0.93</span></div>
-                <div class="pp-row"><span>Fusión</span><span>105–115 °C</span></div>
-                <div class="pp-row"><span>Reciclabilidad</span><span>Medio</span></div>
-              </div>
-              <div class="poly">
-                <div class="pp-sig">PS</div>
-                <div class="pp-n">Poliestireno</div>
-                <div class="pp-row"><span>Densidad</span><span>1.04–1.06</span></div>
-                <div class="pp-row"><span>Fusión</span><span>Amorfo</span></div>
-                <div class="pp-row"><span>Reciclabilidad</span><span>Medio</span></div>
-              </div>
-              <div class="poly">
-                <div class="pp-sig">PVC</div>
-                <div class="pp-n">Cloruro de vinilo</div>
-                <div class="pp-row"><span>Densidad</span><span>1.30–1.45</span></div>
-                <div class="pp-row"><span>Fusión</span><span>Se degrada</span></div>
-                <div class="pp-row"><span>Reciclabilidad</span><span>Bajo</span></div>
-              </div>
+
+            <div class="stage" id="nirStage"><!-- filled by JS --></div>
+
+            <div class="stage-nav">
+              <button class="btn-ghost2" id="nirPrev" onclick="nirPrev()" disabled>← Anterior</button>
+              <div style="font-size:11px;color:var(--text3)" id="nirHint">Paso 1 de 5 · punto de entrada de datos</div>
+              <button class="btn-primary" id="nirNext" onclick="nirNext()">Siguiente →</button>
             </div>
           </div>
         </section>
@@ -2144,7 +2821,7 @@
                 </thead>
                 <tbody>
                   <tr
-                    onclick="showToast('Residuos De Construcción Y Demolición — gestor actual: Parque Ambiental Loma De L')">
+                    onclick="m2Detail(this);showToast('Residuos De Construcción Y Demolición — gestor actual: Parque Ambiental Loma De L')">
                     <td class="rn">Residuos De Construcción Y Demolición</td>
                     <td>20308</td>
                     <td>78,799 t</td>
@@ -2152,7 +2829,8 @@
                     <td>Parque Ambiental Loma De Los Cocos</td>
                     <td><span class="pill disp">Disposición</span></td>
                   </tr>
-                  <tr onclick="showToast('Res Lodos Aceitosos — gestor actual: Veolia Servicios Industria')">
+                  <tr
+                    onclick="m2Detail(this);showToast('Res Lodos Aceitosos — gestor actual: Veolia Servicios Industria')">
                     <td class="rn">Res Lodos Aceitosos</td>
                     <td>Y9.1</td>
                     <td>10,594 t</td>
@@ -2160,7 +2838,7 @@
                     <td>Veolia Servicios Industriales</td>
                     <td><span class="pill disp">Disposición</span></td>
                   </tr>
-                  <tr onclick="showToast('Res Lodos Biológicos — gestor actual: —')">
+                  <tr onclick="m2Detail(this);showToast('Res Lodos Biológicos — gestor actual: —')">
                     <td class="rn">Res Lodos Biológicos</td>
                     <td>70300</td>
                     <td>5,318 t</td>
@@ -2168,7 +2846,7 @@
                     <td>—</td>
                     <td><span class="pill disp">Disposición</span></td>
                   </tr>
-                  <tr onclick="showToast('Residuos Ordinarios — gestor actual: Veolia Cartagena')">
+                  <tr onclick="m2Detail(this);showToast('Residuos Ordinarios — gestor actual: Veolia Cartagena')">
                     <td class="rn">Residuos Ordinarios</td>
                     <td>10000</td>
                     <td>5,260 t</td>
@@ -2176,7 +2854,7 @@
                     <td>Veolia Cartagena</td>
                     <td><span class="pill disp">Disposición</span></td>
                   </tr>
-                  <tr onclick="showToast('Chatarra — gestor actual: Gsr')">
+                  <tr onclick="m2Detail(this);showToast('Chatarra — gestor actual: Gsr')">
                     <td class="rn">Chatarra</td>
                     <td>30600</td>
                     <td>4,204 t</td>
@@ -2184,7 +2862,7 @@
                     <td>Gsr</td>
                     <td><span class="pill aprov">Aprovechado</span></td>
                   </tr>
-                  <tr onclick="showToast('Catalizador Gastado De Fcc — gestor actual: Ultracem S.A.S')">
+                  <tr onclick="m2Detail(this);showToast('Catalizador Gastado De Fcc — gestor actual: Ultracem S.A.S')">
                     <td class="rn">Catalizador Gastado De Fcc</td>
                     <td>30300</td>
                     <td>2,813 t</td>
@@ -2192,7 +2870,7 @@
                     <td>Ultracem S.A.S</td>
                     <td><span class="pill aprov">Aprovechado</span></td>
                   </tr>
-                  <tr onclick="showToast('Madera — gestor actual: Veolia Cartagena')">
+                  <tr onclick="m2Detail(this);showToast('Madera — gestor actual: Veolia Cartagena')">
                     <td class="rn">Madera</td>
                     <td>20800</td>
                     <td>1,490 t</td>
@@ -2201,7 +2879,7 @@
                     <td><span class="pill disp">Disposición</span></td>
                   </tr>
                   <tr
-                    onclick="showToast('Catalizador Gastado Hidrotratamiento D — gestor actual: Veolia Servicios Industria')">
+                    onclick="m2Detail(this);showToast('Catalizador Gastado Hidrotratamiento D — gestor actual: Veolia Servicios Industria')">
                     <td class="rn">Catalizador Gastado Hidrotratamiento De Diésel R-001</td>
                     <td>A2030-6</td>
                     <td>728 t</td>
@@ -2209,7 +2887,8 @@
                     <td>Veolia Servicios Industriales</td>
                     <td><span class="pill aprov">Aprovechado</span></td>
                   </tr>
-                  <tr onclick="showToast('Mdea Con Condensado — gestor actual: Veolia Servicios Industria')">
+                  <tr
+                    onclick="m2Detail(this);showToast('Mdea Con Condensado — gestor actual: Veolia Servicios Industria')">
                     <td class="rn">Mdea Con Condensado</td>
                     <td>A4140</td>
                     <td>623 t</td>
@@ -2217,7 +2896,7 @@
                     <td>Veolia Servicios Industriales</td>
                     <td><span class="pill disp">Disposición</span></td>
                   </tr>
-                  <tr onclick="showToast('Alúmina Gastada — gestor actual: Veolia Servicios Industria')">
+                  <tr onclick="m2Detail(this);showToast('Alúmina Gastada — gestor actual: Veolia Servicios Industria')">
                     <td class="rn">Alúmina Gastada</td>
                     <td>Y35</td>
                     <td>515 t</td>
@@ -2225,7 +2904,8 @@
                     <td>Veolia Servicios Industriales</td>
                     <td><span class="pill disp">Disposición</span></td>
                   </tr>
-                  <tr onclick="showToast('Arcilla De Tratamiento — gestor actual: Veolia Servicios Industria')">
+                  <tr
+                    onclick="m2Detail(this);showToast('Arcilla De Tratamiento — gestor actual: Veolia Servicios Industria')">
                     <td class="rn">Arcilla De Tratamiento</td>
                     <td>A4060-2</td>
                     <td>510 t</td>
@@ -2233,7 +2913,8 @@
                     <td>Veolia Servicios Industriales</td>
                     <td><span class="pill aprov">Aprovechado</span></td>
                   </tr>
-                  <tr onclick="showToast('Elementos Impregnados Con Hc — gestor actual: Veolia Servicios Industria')">
+                  <tr
+                    onclick="m2Detail(this);showToast('Elementos Impregnados Con Hc — gestor actual: Veolia Servicios Industria')">
                     <td class="rn">Elementos Impregnados Con Hc</td>
                     <td>A4060-2</td>
                     <td>427 t</td>
@@ -2307,6 +2988,8 @@
             <p style="font-size:11.5px;color:var(--text3);margin-top:6px">Recomendación basada en las rutas reales del
               piloto: el catalizador gastado de FCC ya se coprocesa en cementeras (Ultracem, Holcim).</p>
           </div>
+
+          <div id="m2detail"></div>
         </section>
 
         <!-- ===== M3 Agua ===== -->
@@ -2529,6 +3212,206 @@
             </div>
           </div>
         </section>
+        <section class="view" id="view-traz">
+          <div class="vhead">
+            <h2>Trazabilidad — Libro mayor (blockchain)</h2>
+            <p>Cada sinergia confirmada queda registrada como un bloque inalterable: qué material, cuánto, de quién a
+              quién y cuándo. Nadie puede modificar la historia.</p>
+          </div>
+          <div class="card2">
+            <div class="card2-h">
+              <h3>Registro de movimientos del clúster</h3><span class="badge"
+                style="background:color-mix(in srgb,var(--purple) 14%,transparent);color:var(--purple)">3 bloques ·
+                cadena íntegra</span>
+            </div>
+            <div class="ledger">
+              <div class="block">
+                <div class="block-h">
+                  <div class="block-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                      <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
+                    </svg></div>
+                  <div>
+                    <div class="block-n">Bloque #002 · Catalizador gastado FCC</div>
+                    <div class="block-t">2024-11-18 · 14:32 UTC</div>
+                  </div>
+                  <div class="block-verified"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg> Verificado</div>
+                </div>
+                <div class="block-grid">
+                  <div class="bg-item">
+                    <div class="bl">Origen</div>
+                    <div class="bv">Refinería de Cartagena (GRC)</div>
+                  </div>
+                  <div class="bg-item">
+                    <div class="bl">Destino</div>
+                    <div class="bv">Ultracem S.A.S — coprocesamiento</div>
+                  </div>
+                  <div class="bg-item">
+                    <div class="bl">Material</div>
+                    <div class="bv">Catalizador gastado de FCC</div>
+                  </div>
+                  <div class="bg-item">
+                    <div class="bl">Cantidad</div>
+                    <div class="bv">1.431 t</div>
+                  </div>
+                  <div class="block-hash">hash: <b>0x8f3a…c012</b> · prev: 0x4b7e…9a15 · firmas: GRC · Ultracem · USTA
+                  </div>
+                </div>
+              </div>
+              <div class="block-link"></div>
+              <div class="block">
+                <div class="block-h">
+                  <div class="block-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                      <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
+                    </svg></div>
+                  <div>
+                    <div class="block-n">Bloque #001 · Chatarra metálica</div>
+                    <div class="block-t">2024-09-05 · 09:10 UTC</div>
+                  </div>
+                  <div class="block-verified"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg> Verificado</div>
+                </div>
+                <div class="block-grid">
+                  <div class="bg-item">
+                    <div class="bl">Origen</div>
+                    <div class="bv">Refinería de Cartagena (GRC)</div>
+                  </div>
+                  <div class="bg-item">
+                    <div class="bl">Destino</div>
+                    <div class="bv">GSR — reciclaje de metales</div>
+                  </div>
+                  <div class="bg-item">
+                    <div class="bl">Material</div>
+                    <div class="bv">Chatarra metálica</div>
+                  </div>
+                  <div class="bg-item">
+                    <div class="bl">Cantidad</div>
+                    <div class="bv">3.430 t</div>
+                  </div>
+                  <div class="block-hash">hash: <b>0x4b7e…9a15</b> · prev: 0x0000…genesis · firmas: GRC · GSR · USTA
+                  </div>
+                </div>
+              </div>
+              <div class="block-link"></div>
+              <div class="block" style="opacity:.8">
+                <div class="block-h">
+                  <div class="block-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                      <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
+                    </svg></div>
+                  <div>
+                    <div class="block-n">Bloque génesis · Apertura del registro</div>
+                    <div class="block-t">2024-08-01 · 00:00 UTC</div>
+                  </div>
+                  <div class="block-verified"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg> Verificado</div>
+                </div>
+                <div class="block-grid">
+                  <div class="bg-item" style="grid-column:1/-1">
+                    <div class="bl">Evento</div>
+                    <div class="bv">Inicialización del libro mayor de trazabilidad del clúster de Mamonal</div>
+                  </div>
+                  <div class="block-hash">hash: <b>0x0000…genesis</b></div>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:11.5px;color:var(--text3);margin-top:12px">Para el usuario, blockchain no es visible
+              como tecnología: se percibe como un historial confiable que nadie puede alterar. Cada bloque referencia al
+              anterior (prev), lo que hace la cadena inviolable.</p>
+          </div>
+        </section>
+        <section class="view" id="view-anal">
+          <div class="vhead">
+            <h2>Analítica de datos</h2>
+            <p>Cada lectura NIR y cada registro alimenta la analítica del clúster. Es uno de los elementos de valor:
+              convierte datos dispersos en información para decidir.</p>
+          </div>
+          <div class="an-grid">
+            <div class="an-card">
+              <h4>Composición del catálogo de plásticos</h4>
+              <div class="an-sub">Por tipo de polímero caracterizado con NIR</div>
+              <div class="donut-wrap">
+                <svg viewBox="0 0 120 120" width="120" height="120">
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="var(--border)" stroke-width="16" />
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="var(--teal)" stroke-width="16"
+                    stroke-dasharray="115 174" transform="rotate(-90 60 60)" />
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="var(--green)" stroke-width="16"
+                    stroke-dasharray="72 217" stroke-dashoffset="-115" transform="rotate(-90 60 60)" />
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="var(--amber)" stroke-width="16"
+                    stroke-dasharray="52 237" stroke-dashoffset="-187" transform="rotate(-90 60 60)" />
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="var(--blue)" stroke-width="16"
+                    stroke-dasharray="50 239" stroke-dashoffset="-239" transform="rotate(-90 60 60)" />
+                  <text x="60" y="58" text-anchor="middle" font-size="18" font-weight="800" fill="var(--text)">6</text>
+                  <text x="60" y="72" text-anchor="middle" font-size="8" fill="var(--text3)">polímeros</text>
+                </svg>
+                <div class="legend2">
+                  <div class="l2"><span class="d" style="background:var(--teal)"></span>PET <b>40%</b></div>
+                  <div class="l2"><span class="d" style="background:var(--green)"></span>PP <b>25%</b></div>
+                  <div class="l2"><span class="d" style="background:var(--amber)"></span>HDPE <b>18%</b></div>
+                  <div class="l2"><span class="d" style="background:var(--blue)"></span>Otros <b>17%</b></div>
+                </div>
+              </div>
+            </div>
+            <div class="an-card">
+              <h4>Tasa de aprovechamiento</h4>
+              <div class="an-sub">Evolución proyectada al integrar sinergias</div>
+              <svg viewBox="0 0 300 150" style="width:100%;height:auto">
+                <line x1="30" y1="120" x2="290" y2="120" stroke="var(--border)" />
+                <line x1="30" y1="20" x2="30" y2="120" stroke="var(--border)" />
+                <polyline points="30,108 82,104 134,92 186,74 238,52 290,36" fill="none" stroke="var(--green)"
+                  stroke-width="2.5" />
+                <circle cx="30" cy="108" r="3.5" fill="var(--green)" />
+                <circle cx="290" cy="36" r="4.5" fill="var(--green)" />
+                <text x="30" y="136" font-size="9" fill="var(--text3)" text-anchor="middle">Hoy</text>
+                <text x="290" y="136" font-size="9" fill="var(--text3)" text-anchor="middle">Meta</text>
+                <text x="14" y="112" font-size="9" fill="var(--text3)">15%</text><text x="10" y="40" font-size="9"
+                  fill="var(--text3)">48%</text>
+              </svg>
+              <p style="font-size:11px;color:var(--text3);margin-top:6px">Del <b style="color:var(--amber)">15%
+                  actual</b> hacia una meta de aprovechamiento creciente a medida que el motor conecta más sinergias.
+              </p>
+            </div>
+            <div class="an-card">
+              <h4>Lecturas NIR acumuladas</h4>
+              <div class="an-sub">Cada lectura suma un registro caracterizado al catálogo</div>
+              <div style="display:flex;align-items:flex-end;gap:9px;height:90px;margin-top:8px">
+                <div style="flex:1;background:var(--teal);border-radius:5px 5px 0 0;height:35%"></div>
+                <div style="flex:1;background:var(--teal);border-radius:5px 5px 0 0;height:52%"></div>
+                <div style="flex:1;background:var(--teal);border-radius:5px 5px 0 0;height:64%"></div>
+                <div style="flex:1;background:var(--teal);border-radius:5px 5px 0 0;height:78%"></div>
+                <div style="flex:1;background:var(--teal);border-radius:5px 5px 0 0;height:100%"></div>
+              </div>
+              <p style="font-size:11px;color:var(--text3);margin-top:10px">Tendencia creciente conforme las empresas
+                adoptan la captura con NIR.</p>
+            </div>
+            <div class="an-card">
+              <h4>De dónde salen estos datos</h4>
+              <div class="an-sub">La analítica se nutre de todo el flujo</div>
+              <div class="feed-item"><span class="fi-dot"></span>Lecturas NIR del módulo M1 (caracterización)</div>
+              <div class="feed-item"><span class="fi-dot"></span>Registros de residuos del módulo M2 (1.176 del piloto)
+              </div>
+              <div class="feed-item"><span class="fi-dot"></span>Reportes de consumo hídrico del módulo M3</div>
+              <div class="feed-item"><span class="fi-dot"></span>Movimientos confirmados en el libro mayor (blockchain)
+              </div>
+              <p style="font-size:11px;color:var(--text3);margin-top:10px">La analítica es transversal: cruza los tres
+                módulos y la trazabilidad para revelar oportunidades de circularidad.</p>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   </div>
@@ -2552,13 +3435,14 @@
     }
 
     // module views
-    const VNAMES = { m1: 'M1 \· Plásticos', m2: 'M2 \· Residuos y Materiales', m3: 'M3 \· Agua', radio: 'Radio de circularidad', proj: 'Proyectos' };
+    const VNAMES = { m1: 'M1 \· Plásticos', m2: 'M2 \· Residuos y Materiales', m3: 'M3 \· Agua', radio: 'Radio de circularidad', proj: 'Proyectos', traz: 'Trazabilidad', anal: 'Analítica' };
     function showView(id, el) {
       document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
       document.getElementById('view-' + id).classList.add('on');
       document.querySelectorAll('.navitem').forEach(n => n.classList.remove('on'));
       if (el) el.classList.add('on');
       document.getElementById('vtag').textContent = VNAMES[id] || id;
+      if (id === 'm1' && typeof nirRender === 'function') nirRender();
     }
 
     // radio de circularidad — real routes
@@ -2613,6 +3497,184 @@
     function endTour() { document.getElementById('tourOverlay').classList.remove('on'); }
 
     function showToast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2600); }
+
+    // ===== NIR interactive flow =====
+    const POLY = {
+      PET: { sig: 'PET', nom: 'Tereftalato de polietileno', den: '1,38–1,40 g/cm³', fus: '250–260 °C', mfi: '20–40 g/10min', banda: '1660 / 1130 cm⁻¹', rec: 'Alta' },
+      PP: { sig: 'PP', nom: 'Polipropileno', den: '0,90–0,91 g/cm³', fus: '160–165 °C', mfi: '2–40 g/10min', banda: '2950 / 1376 cm⁻¹', rec: 'Alta' },
+      HDPE: { sig: 'HDPE', nom: 'Polietileno de alta densidad', den: '0,94–0,96 g/cm³', fus: '125–135 °C', mfi: '0,1–60 g/10min', banda: '1470 / 730 cm⁻¹', rec: 'Alta' },
+    };
+    // receptores por polímero (radio de circularidad)
+    const RECEP = {
+      PET: [
+        { emp: 'Esenttia — Mamonal', proc: 'Valorización de polímero', km: 12, res: 'PET post-industrial', modo: 'Volqueta · $1.800/t', via: 'Alta', pct: 12, best: true },
+        { emp: 'Plastiton', proc: 'Reciclaje mecánico', km: 28, res: 'PET post-industrial', modo: 'Camión · $2.400/t', via: 'Alta', pct: 28, best: false },
+        { emp: 'Recuperadora Caribe', proc: 'Reciclaje mecánico', km: 46, res: 'PET mezclado', modo: 'Camión · $3.100/t', via: 'Media', pct: 46, best: false },
+        { emp: 'Gestor RCD — Barranquilla', proc: 'Valorización energética', km: 128, res: 'PET no reciclable', modo: 'Tractomula · $9.200/t', via: 'Baja', pct: 100, best: false },
+      ],
+      PP: [
+        { emp: 'Esenttia — Mamonal', proc: 'Valorización de polímero', km: 12, res: 'PP post-industrial', modo: 'Volqueta · $1.800/t', via: 'Alta', pct: 12, best: true },
+        { emp: 'Plastiton', proc: 'Reciclaje mecánico', km: 28, res: 'PP limpio', modo: 'Camión · $2.400/t', via: 'Alta', pct: 28, best: false },
+        { emp: 'Cementera Ultracem', proc: 'Coprocesamiento', km: 38, res: 'PP no reciclable', modo: 'Cisterna · $4.200/t', via: 'Media', pct: 38, best: false },
+        { emp: 'Recuperadora Caribe', proc: 'Reciclaje mecánico', km: 46, res: 'PP mezclado', modo: 'Camión · $3.100/t', via: 'Media', pct: 46, best: false },
+      ],
+      HDPE: [
+        { emp: 'Plastiton', proc: 'Reciclaje mecánico', km: 28, res: 'HDPE rígido', modo: 'Camión · $2.400/t', via: 'Alta', pct: 28, best: true },
+        { emp: 'Esenttia — Mamonal', proc: 'Valorización de polímero', km: 12, res: 'HDPE post-industrial', modo: 'Volqueta · $1.800/t', via: 'Alta', pct: 12, best: false },
+        { emp: 'Recuperadora Caribe', proc: 'Reciclaje mecánico', km: 46, res: 'HDPE mezclado', modo: 'Camión · $3.100/t', via: 'Media', pct: 46, best: false },
+        { emp: 'Gestor RCD — Barranquilla', proc: 'Valorización energética', km: 128, res: 'HDPE no reciclable', modo: 'Tractomula · $9.200/t', via: 'Baja', pct: 100, best: false },
+      ],
+    };
+    function viaColor(v) { return v === 'Alta' ? 'var(--green)' : v === 'Media' ? 'var(--amber)' : 'var(--red)'; }
+    let nirStep = 0, nirSample = 'PET', nirScanned = false;
+
+    function radioCards(poly) {
+      const list = RECEP[poly] || [];
+      let h = '<div class="rc-grid">';
+      for (const r of list) {
+        const c = viaColor(r.via);
+        h += `<div class="rc-card${r.best ? ' best' : ''}">
+          <div class="rc-top"><div><div class="rc-emp">${r.emp}</div><div class="rc-proc">${r.proc}</div></div>
+          <div class="rc-km" style="color:${c}">${r.km} km</div></div>
+          <div class="rc-meta">Residuo: <b>${r.res}</b></div>
+          <div class="rc-meta">Modo: ${r.modo}</div>
+          <div class="rc-bar"><i style="width:${r.pct}%;background:${c}"></i></div>
+          <div class="rc-via" style="color:${c}">Viabilidad ${r.via.toLowerCase()}${r.best ? ' · mejor opción' : ''}</div>
+        </div>`;
+      }
+      return h + '</div>';
+    }
+
+    const NIRSTAGES = [
+      // 0 Captura
+      () => `<div class="stage-title">Punto de entrada de los datos</div>
+        <div class="stage-desc">El dato de un residuo plástico puede entrar por tres canales. En todos, el equipo NIR aporta la identificación del material.</div>
+        <div class="chan-grid">
+          <div class="chan"><div class="ch-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></div><h5>App móvil</h5><p>El operador escanea el residuo en campo con el NIR portátil y registra desde el celular.</p><span class="ch-tag">en línea</span></div>
+          <div class="chan"><div class="ch-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div><h5>Carga web</h5><p>Carga de lotes de residuos ya caracterizados desde el navegador.</p><span class="ch-tag">en línea</span></div>
+          <div class="chan"><div class="ch-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 15h6"/></svg></div><h5>Importación offline</h5><p>El equipo NIR exporta un archivo (CSV/JSON) que se importa cuando hay conexión.</p><span class="ch-tag">sin conexión</span></div>
+        </div>
+        <div class="sample-row"><label>Simular una lectura. Muestra de residuo:</label>
+          <select class="sample-sel" id="nirSampleSel" onchange="nirSample=this.value">
+            <option value="PET">Botella transparente (posible PET)</option>
+            <option value="PP">Envase rígido (posible PP)</option>
+            <option value="HDPE">Bidón opaco (posible HDPE)</option>
+          </select>
+          <button class="btn-primary" onclick="nirNext()"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg> Escanear con NIR</button>
+        </div>`,
+      // 1 Lectura NIR
+      () => {
+        setTimeout(runScan, 60); return `<div class="stage-title">Lectura NIR — caracterización espectral</div>
+        <div class="stage-desc">El equipo emite luz infrarroja cercana sobre la muestra y lee cómo la refleja. Ese patrón es la "huella" del material.</div>
+        <div class="scan-box"><svg class="scan-svg" id="scanSvg" viewBox="0 0 600 130" preserveAspectRatio="none"></svg>
+          <div class="scan-status" id="scanStatus"><span class="spinner"></span> Adquiriendo espectro…</div></div>`;
+      },
+      // 2 Caracterización
+      () => {
+        const p = POLY[nirSample]; return `<div class="stage-title">Caracterización — ficha técnica del polímero</div>
+        <div class="stage-desc">El sistema compara el espectro con su base y devuelve el polímero y sus propiedades. Este dato es el que faltaba para poder aprovecharlo.</div>
+        <div class="ficha">
+          <div class="ficha-main"><div class="ficha-sig">${p.sig}</div><div class="ficha-nom">${p.nom}</div>
+            <div class="fp-row"><span>Densidad</span><span>${p.den}</span></div>
+            <div class="fp-row"><span>Punto de fusión</span><span>${p.fus}</span></div>
+            <div class="fp-row"><span>Índice de fluidez (MFI)</span><span>${p.mfi}</span></div>
+            <div class="fp-row"><span>Banda NIR característica</span><span>${p.banda}</span></div>
+            <div class="fp-row"><span>Reciclabilidad</span><span style="color:var(--green)">${p.rec}</span></div>
+          </div>
+          <div class="feeds"><h5><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 15l3-3 3 2 4-5"/></svg> Cada lectura alimenta:</h5>
+            <div class="feed-item"><span class="fi-dot"></span>El catálogo digital (+1 registro caracterizado)</div>
+            <div class="feed-item"><span class="fi-dot"></span>La analítica de composición del clúster</div>
+            <div class="feed-item"><span class="fi-dot"></span>El motor que busca quién puede aprovecharlo</div>
+          </div>
+        </div>`;
+      },
+      // 3 Radio de circularidad
+      () => `<div class="stage-title">Radio de circularidad — ¿quién puede aprovecharlo?</div>
+        <div class="stage-desc">Con el material ya identificado, el sistema muestra las empresas receptoras ordenadas por viabilidad (distancia, proceso y costo). Ahí está la circularidad: el ${nirSample} deja de ser residuo y se convierte en insumo.</div>
+        ${radioCards(nirSample)}`,
+      // 4 Trazabilidad
+      () => `<div class="stage-title">Trazabilidad — se registra la sinergia</div>
+        <div class="stage-desc">Al confirmar la conexión, el movimiento queda grabado como un bloque inalterable. Así se garantiza que lo que se reporta realmente ocurrió.</div>
+        <div class="block" style="max-width:560px">
+          <div class="block-h"><div class="block-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg></div>
+          <div><div class="block-n">Nuevo bloque · ${nirSample} → Esenttia</div><div class="block-t">registro generado ahora</div></div>
+          <div class="block-verified"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Verificado</div></div>
+          <div class="block-grid">
+            <div class="bg-item"><div class="bl">Material</div><div class="bv">${nirSample} caracterizado por NIR</div></div>
+            <div class="bg-item"><div class="bl">Origen → Destino</div><div class="bv">Refinería → Esenttia</div></div>
+            <div class="block-hash">hash: <b>0x9c1d…${Math.random().toString(16).slice(2, 6)}</b> · prev: 0x8f3a…c012</div>
+          </div></div>
+        <p style="font-size:12px;color:var(--text2);margin-top:16px;max-width:620px">Flujo completo demostrado: <b>se capturó</b> el residuo, el <b>NIR lo identificó</b>, el sistema mostró <b>sus características</b> y <b>quién puede usarlo</b>, y la conexión quedó <b>trazada</b>. Eso es circularidad de principio a fin.</p>
+        <div style="margin-top:14px"><button class="btn-ghost2" onclick="nirGo(0)">↺ Reiniciar simulación</button> <button class="btn-primary" onclick="showView('traz',document.querySelector('[data-nav=traz]'))">Ver libro mayor completo →</button></div>`,
+    ];
+
+    function runScan() {
+      const svg = document.getElementById('scanSvg'); if (!svg) return;
+      svg.innerHTML = ''; const W = 600, H = 130; let x = 0;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+      path.setAttribute('fill', 'none'); path.setAttribute('stroke', 'var(--teal)'); path.setAttribute('stroke-width', '2');
+      svg.appendChild(path);
+      const pts = []; const seed = nirSample.length;
+      const timer = setInterval(() => {
+        for (let k = 0; k < 12 && x <= W; k++, x += 6) {
+          const y = H / 2 + Math.sin(x / 22 + seed) * 22 * Math.exp(-Math.pow((x - 300) / 240, 2)) + Math.sin(x / 7) * 6 * (x > 120 && x < 480 ? 1 : .3);
+          pts.push(`${x},${y.toFixed(1)}`);
+        }
+        path.setAttribute('points', pts.join(' '));
+        if (x > W) {
+          clearInterval(timer);
+          const st = document.getElementById('scanStatus');
+          if (st) st.innerHTML = '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> <span style="color:var(--green)">Espectro adquirido — polímero identificado: <b>' + nirSample + '</b></span>';
+        }
+      }, 40);
+    }
+
+    function nirRender() {
+      document.getElementById('nirStage').innerHTML = NIRSTAGES[nirStep]();
+      // track state
+      document.querySelectorAll('#nirTrack .ft-node').forEach((n, i) => {
+        n.classList.toggle('active', i === nirStep); n.classList.toggle('done', i < nirStep);
+      });
+      document.querySelectorAll('#nirTrack .ft-line').forEach((l, i) => l.classList.toggle('done', i < nirStep));
+      document.getElementById('nirPrev').disabled = nirStep === 0;
+      const labels = ['punto de entrada de datos', 'lectura espectral', 'ficha del polímero', 'receptores potenciales', 'registro trazable'];
+      document.getElementById('nirHint').textContent = `Paso ${nirStep + 1} de 5 · ${labels[nirStep]}`;
+      document.getElementById('nirNext').style.visibility = nirStep === 4 ? 'hidden' : 'visible';
+      if (document.getElementById('nirSampleSel')) document.getElementById('nirSampleSel').value = nirSample;
+    }
+    function nirGo(i) { nirStep = Math.max(0, Math.min(4, i)); nirRender(); }
+    function nirNext() { if (nirStep < 4) { nirStep++; nirRender(); } }
+    function nirPrev() { if (nirStep > 0) { nirStep--; nirRender(); } }
+
+    // ===== M2 clickable rows -> radio de circularidad =====
+    // Map some real residues to receptor sets (reuse plastic-style cards, but real material)
+    const M2RECEP = {
+      'Catalizador Gastado De Fcc': [
+        { emp: 'Ultracem S.A.S', proc: 'Coprocesamiento en cementera', km: 12, res: 'Catalizador gastado FCC', modo: 'Cisterna · $4.200/t', via: 'Alta', pct: 12, best: true },
+        { emp: 'Holcim Colombia S.A.', proc: 'Coprocesamiento en cementera', km: 38, res: 'Catalizador gastado FCC', modo: 'Cisterna · $5.100/t', via: 'Media', pct: 38, best: false },
+      ],
+      'Chatarra': [
+        { emp: 'GSR', proc: 'Reciclaje de metales', km: 22, res: 'Chatarra metálica', modo: 'Camión · $2.900/t', via: 'Alta', pct: 22, best: true },
+        { emp: 'Diaco', proc: 'Siderúrgica — refundición', km: 54, res: 'Chatarra metálica', modo: 'Tractomula · $6.400/t', via: 'Media', pct: 54, best: false },
+        { emp: 'Acería Paz del Río', proc: 'Siderúrgica — refundición', km: 128, res: 'Chatarra metálica', modo: 'Tractomula · $11.800/t', via: 'Baja', pct: 100, best: false },
+      ],
+    };
+    function m2Detail(rowEl) {
+      const box = document.getElementById('m2detail'); if (!box) return;
+      const name = (rowEl.querySelector ? (rowEl.querySelector('.rn') || {}).textContent : rowEl) || '';
+      const list = M2RECEP[name];
+      if (!list) { box.innerHTML = `<div class="card2"><div class="card2-h"><h3>Radio de circularidad · ${name}</h3></div><p style="font-size:12.5px;color:var(--text3)">Este residuo aún no tiene receptores caracterizados en el piloto. El motor lo evaluará cuando se registren gestores compatibles.</p></div>`; box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); return; }
+      let cards = '<div class="rc-grid">';
+      for (const r of list) {
+        const c = r.via === 'Alta' ? 'var(--green)' : r.via === 'Media' ? 'var(--amber)' : 'var(--red)';
+        cards += `<div class="rc-card${r.best ? ' best' : ''}"><div class="rc-top"><div><div class="rc-emp">${r.emp}</div><div class="rc-proc">${r.proc}</div></div><div class="rc-km" style="color:${c}">${r.km} km</div></div><div class="rc-meta">Residuo: <b>${r.res}</b></div><div class="rc-meta">Modo: ${r.modo}</div><div class="rc-bar"><i style="width:${r.pct}%;background:${c}"></i></div><div class="rc-via" style="color:${c}">Viabilidad ${r.via.toLowerCase()}${r.best ? ' · mejor opción' : ''}</div></div>`;
+      }
+      cards += '</div>';
+      box.innerHTML = `<div class="card2"><div class="card2-h"><h3>Radio de circularidad · ${name}</h3><span class="badge">${list.length} receptores</span></div>${cards}</div>`;
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    if (document.getElementById("nirStage")) nirRender();
   </script>
 </body>
 
